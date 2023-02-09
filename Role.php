@@ -45,3 +45,5 @@ class Role
 		return "le role de " . $this->role;
 	}
 }
+
+?>

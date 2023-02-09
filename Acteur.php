@@ -30,3 +30,5 @@ class Acteur extends Personne
 		$display = "<br>";
 	}
 }
+
+?>
