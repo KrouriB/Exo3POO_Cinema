@@ -26,7 +26,7 @@ class Role
 	}
 
 
-	public function afficherParRole()
+	public function afficherCastingParRole()
 	{
 		$display = "";
 		$display .= "Les acteur ayant jouer ";
@@ -35,7 +35,8 @@ class Role
 		foreach ($this->castings as $unActeur) {
 			$unActeur->get_acteur() . " dans " . $unActeur->get_film();
 		}
-		$display = "<br>";
+		$display .= "<br>";
+		echo $display;
 	}
 
 	public function __toString()

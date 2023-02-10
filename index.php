@@ -34,14 +34,15 @@ spl_autoload_register(function ($class_name) {
 	require_once $class_name . '.php';
 });
 
-$real1 = new Realisateur("John", "Doe", "Type A", "15-11-1962");
+$real1 = new Realisateur("George", "Doe", "Type A", "15-11-1962");
 $genre1 = new Genre("générique");
 $film1 = new Film("Pas d'idées", "17-02-1980", 153, $real1, $genre1);
 $acteur1 = new Acteur("Jane", "Doe", "Type B", "29-02-1968");
 $role1 = new Role("Generico");
 $cast1 = new Casting($film1, $acteur1, $role1);
-$leformat = new IntlDateFormatter('fr_FR', IntlDateFormatter::SHORT, IntlDateFormatter::NONE);
+//  $real1->afficherParReal();
 
+ $film1->afficherCastingParFilm();
 // img url des affiche a implanter :
 
 ?>

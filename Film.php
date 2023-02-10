@@ -76,7 +76,7 @@ class Film
 		$this->castings[] = $casting;
 	}
 
-	public function afficherParFilm()
+	public function afficherCastingParFilm()
 	{
 		$display = "";
 		$display .= "Dans le film ";
@@ -85,7 +85,8 @@ class Film
 		foreach ($this->castings as $unCast) {
 			$display .= "Le personnage de " . $unCast->get_role() . " joué par " . $unCast->get_acteur() . "<br>";
 		}
-		$display = "<br>";
+		$display .= "<br>";
+		echo $display;
 	}
 
 	public function __toString()

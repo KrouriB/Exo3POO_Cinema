@@ -18,14 +18,15 @@ class Realisateur extends Personne
 
 	public function afficherParReal()
 	{
-		$leformat = new IntlDateFormatter('fr_FR', IntlDateFormatter::SHORT, IntlDateFormatter::NONE);
+		$leformat = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
 		$display = "";
 		$display .= "Le réalisateur ";
 		$display .= parent::get_nom_prenom();
 		$display .= " à comme filmographie : ";
 		foreach ($this->films as $unFilm) {
-			$display .= $unFilm->get_titre." en ".$unFilm->get_dateSortieFR()->leformat('d/m/y')."<br>";
+			$display .= $unFilm->get_titre()." en ".$leformat->format($unFilm->get_dateSortieFR())."<br>";
 		}
-		$display = "<br>";
+		$display .= "<br>";
+		echo $display;
 	}
 }
