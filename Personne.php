@@ -6,7 +6,7 @@ class Personne
 	private string $prenom;
 	private string $sexe;
 	private DateTime $dateDeNaissance;
-	private array $film;
+	private array $films;
 
 	public function __construct(string $nom, string $prenom, string $sexe, string $laDateNaissance)
 	{
@@ -14,6 +14,7 @@ class Personne
 		$this->prenom = $prenom;
 		$this->sexe = $sexe;
 		$this->dateDeNaissance = new DateTime($laDateNaissance);
+		$this->films = [];
 	}
 
 
@@ -24,7 +25,7 @@ class Personne
 	}
 	public function get_nom()
 	{
-		return $this->nom ;
+		return $this->nom;
 	}
 	public function set_prenom(string $prenom)
 	{
@@ -32,7 +33,7 @@ class Personne
 	}
 	public function get_prenom()
 	{
-		return $this->prenom ;
+		return $this->prenom;
 	}
 	public function set_sexe(string $sexe)
 	{
@@ -40,7 +41,7 @@ class Personne
 	}
 	public function get_sexe()
 	{
-		return $this->sexe ;
+		return $this->sexe;
 	}
 	public function set_dateDeNaissance(string $laDateNaissance)
 	{
@@ -48,20 +49,18 @@ class Personne
 	}
 	public function get_dateDeNaissance()
 	{
-		return $this->dateDeNaissance ;
+		return $this->dateDeNaissance;
 	}
 
 
 
 	public function get_nom_prenom()
 	{
-		return  $this->nom." ".$this->prenom;
+		return  $this->nom . " " . $this->prenom;
 	}
 
-	public function ajoutFilm($leFilm)
+	public function ajoutFilm(Film $leFilm)
 	{
-		$this->film[] = $leFilm;
+		$this->films[] = $leFilm;
 	}
 }
-
-?>

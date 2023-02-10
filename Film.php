@@ -1,15 +1,16 @@
 <?php
 
-class Film{
-    private string $titre;
+class Film
+{
+	private string $titre;
 	private DateTime $dateSortieFR;
 	private int $temps;
 	private Realisateur $real;
 	private Genre $genre;
 	private string $resume;
-	private Casting $cast;
+	private array $castings;
 
-	public function __construct(string $titre,string $laDateFR,int $temps,Realisateur $real,Genre $genre)
+	public function __construct(string $titre, string $laDateFR, int $temps, Realisateur $real, Genre $genre)
 	{
 		$this->titre = $titre;
 		$this->dateSortieFR = new DateTime($laDateFR);
@@ -18,6 +19,7 @@ class Film{
 		$this->real->ajoutFilm($this);
 		$this->genre = $genre;
 		$this->genre->ajoutFilm($this);
+		$this->castings = [];
 	}
 
 	public function set_titre(string $titre)
@@ -26,7 +28,7 @@ class Film{
 	}
 	public function get_titre()
 	{
-		return $this->titre ;
+		return $this->titre;
 	}
 	public function set_dateSortieFR(string $laDateFR)
 	{
@@ -34,7 +36,7 @@ class Film{
 	}
 	public function get_dateSortieFR()
 	{
-		return $this->dateSortieFR ;
+		return $this->dateSortieFR;
 	}
 	public function set_temps(int $temps)
 	{
@@ -42,7 +44,7 @@ class Film{
 	}
 	public function get_temps()
 	{
-		return $this->temps ;
+		return $this->temps;
 	}
 	public function set_real(Realisateur $real)
 	{
@@ -50,7 +52,7 @@ class Film{
 	}
 	public function get_real()
 	{
-		return $this->real ;
+		return $this->real;
 	}
 	public function set_genre(Genre $genre)
 	{
@@ -58,7 +60,7 @@ class Film{
 	}
 	public function get_genre()
 	{
-		return $this->genre ;
+		return $this->genre;
 	}
 	public function set_resume(string $resume)
 	{
@@ -66,10 +68,28 @@ class Film{
 	}
 	public function get_resume()
 	{
-		return $this->resume ;
+		return $this->resume;
 	}
 
+	public function addCasting(Casting $casting)
+	{
+		$this->castings[] = $casting;
+	}
 
+	public function afficherParFilm()
+	{
+		$display = "";
+		$display .= "Dans le film ";
+		$display .= $this->titre;
+		$display .= "<br>";
+		foreach ($this->castings as $unCast) {
+			$display .= "Le personnage de " . $unCast->get_role() . " joué par " . $unCast->get_acteur() . "<br>";
+		}
+		$display = "<br>";
+	}
+
+	public function __toString()
+	{
+		return $this->titre;
+	}
 }
-
-?>

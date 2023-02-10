@@ -3,7 +3,7 @@
 class Genre
 {
 	private string $genre;
-	private array $film;
+	private array $films;
 
 	public function __construct(string $genre)
 	{
@@ -16,13 +16,11 @@ class Genre
 	}
 	public function get_genre()
 	{
-		return $this->genre ;
+		return $this->genre;
 	}
 
 	public function ajoutFilm($leFilm)
 	{
-		$this->film[] = $leFilm;
+		$this->films[] = $leFilm;
 	}
 }
-
-?>

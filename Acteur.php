@@ -2,33 +2,36 @@
 
 class Acteur extends Personne
 {
-	private array $roles;
-	private Role $role;
-	private Casting $cast;
+	private array $castings;
 
-	public function __construct(string $nom, string $prenom, string $sexe, string $laDateNaissance, Role $role)
+	public function __construct(string $nom, string $prenom, string $sexe, string $laDateNaissance)
 	{
 		parent::__construct($nom, $prenom, $sexe, $laDateNaissance);
-		$this->role->ajoutActeur($this);
+		$this->castings = [];
 	}
 
-	public function ajoutRole(Role $lesRoles)
+	public function addCasting(Casting $casting)
 	{
-		$this->roles[] = $lesRoles;
+		$this->castings[] = $casting;
 	}
 
 
-	public function afficherRoleDeLActeur()
+
+
+	public function afficherParActeur()
 	{
 		$display = "";
-		$display .= "Les role ayant été incarer par cette l'acteur ";
+		$display .= "L'acteur ";
 		$display .= parent::get_nom_prenom();
-		$display = " sont : <br>";
-		foreach ($this->roles as $unRole) {
-			$unRole->get_role();
+		$display .= " à incarner : ";
+		foreach ($this->castings as $unRole) {
+			$display .= $unRole->get_role() . " dans " . $unRole->get_film() . "<br>";
 		}
 		$display = "<br>";
 	}
-}
 
-?>
+	public function __toString()
+	{
+		return parent::get_nom_prenom();
+	}
+}

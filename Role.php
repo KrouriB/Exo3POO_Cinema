@@ -3,47 +3,43 @@
 class Role
 {
 	private string $role;
-	private array $lesacteurs;
-	private Casting $cast;
-	private Acteur $acteur;
+	private array $castings;
 
-	public function __construct(string $role, Acteur $acteur)
+	public function __construct(string $role)
 	{
 		$this->role = $role;
-		$this->acteur->ajoutRole($this);
+		$this->castings = [];
 	}
 
 	public function set_role(string $role)
 	{
 		$this->role = $role;
 	}
-	public function get_nom()
+	public function get_role()
 	{
 		return $this->role;
 	}
 
-	public function ajoutActeur(Acteur $unActeur)
+	public function addCasting(Casting $casting)
 	{
-		$this->lesacteurs[] = $unActeur;
+		$this->castings[] = $casting;
 	}
 
 
-	public function afficherActeurDuRole()
+	public function afficherParRole()
 	{
 		$display = "";
 		$display .= "Les acteur ayant jouer ";
 		$display .= $this;
 		$display = " sont : <br>";
-		foreach ($this->lesacteurs as $unActeur) {
-			$unActeur->get_nom_prenom();
+		foreach ($this->castings as $unActeur) {
+			$unActeur->get_acteur() . " dans " . $unActeur->get_film();
 		}
 		$display = "<br>";
 	}
 
 	public function __toString()
 	{
-		return "le role de " . $this->role;
+		return $this->role;
 	}
 }
-
-?>
